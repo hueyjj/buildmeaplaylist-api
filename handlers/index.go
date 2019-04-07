@@ -4,5 +4,6 @@ import (
 	"net/http"
 )
 
-func IndexHandler(w. http.ResponseWriter, r *http.Request) {
+// IndexHandler serves default route with homepage
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
 }

@@ -1,8 +1,12 @@
 package api
 
 import (
+	"context"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -20,14 +24,14 @@ func Serve(ip, port string) {
 		Handler:      router,
 		Addr:         ipport,
 		WriteTimeout: 15 * time.Second,
-		RealTimeout:  15 * time.Second,
+		ReadTimeout:  15 * time.Second,
 	}
 
 	go func() {
-		if err := server.ListeAndServe(); err != nil {
+		if err := server.ListenAndServe(); err != nil {
 			log.Fatalf("Unable to start server: %v\n", err)
 		}
-	}
+	}()
 
 	log.Printf("Server running at %s\n", ipport)
 
@@ -37,7 +41,7 @@ func Serve(ip, port string) {
 	<-c
 
 	// Wait a deadline to end
-	ctx, cancel := context.WithTimeout(context.Background(), 15 * time.Millisecond)
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Millisecond)
 	defer cancel()
 	server.Shutdown(ctx)
 
