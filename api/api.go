@@ -17,7 +17,7 @@ import (
 // remove database records
 func Serve(ip, port string) {
 	router := mux.NewRouter()
-	router.HandleFunc("/", handlers.IndexHandler).Methods("GET")
+	router.HandleFunc("/api", handlers.IndexHandler).Methods("GET")
 
 	ipport := fmt.Sprintf("%s:%s", ip, port)
 	server := &http.Server{
