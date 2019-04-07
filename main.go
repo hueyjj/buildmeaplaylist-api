@@ -16,6 +16,7 @@ func main() {
 
 	} else {
 		log.Printf("IP=%s and/or PORT=%s unset\n", ip, port)
+		os.Exit(1)
 	}
 
 	api.Serve(ip, port)
