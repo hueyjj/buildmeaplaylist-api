@@ -5,19 +5,25 @@ import (
 	"os"
 
 	"github.com/hueyjj/buildmeaplaylist-api/api"
+	"github.com/hueyjj/buildmeaplaylist-api/handlers"
+	_ "github.com/lib/pq"
 )
 
 func main() {
 	ip := os.Getenv("IP")
 	port := os.Getenv("PORT")
+	connStr := os.Getenv("DB")
 
-	if ip != "" && port != "" {
-		log.Printf("Environment variable set: IP=%s PORT=%s\n", ip, port)
+	if ip != "" && port != "" && connStr != "" {
+		log.Printf("Environment variable set: IP=%s PORT=%s DB=%s\n", ip, port, connStr)
 
 	} else {
-		log.Printf("IP=%s and/or PORT=%s unset\n", ip, port)
+		log.Printf("Some environmental variable(s) unset IP=%s PORT=%s DB=%s\n", ip, port, connStr)
 		os.Exit(1)
 	}
 
-	api.Serve(ip, port)
+	db := handlers.NewConnection(connStr)
+	log.Println("Established connection to postgresql database.")
+
+	api.Serve(db, ip, port)
 }
