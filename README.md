@@ -1,6 +1,16 @@
 # buildmeaplaylist-api
 API server handling authentication, database writes, BuildMeAPlaylist backend business logic
 
+# Quickstart
+```
+go get -u github.com/hueyjj/buildmeaplaylist-api
+go get -u ./... # Install all dependencies
+go build
+IP=0.0.0.0 PORT=8080 DB=YOUR_POSTGRESQL_URL SESSION_KEY=YOUR_SESSION_KEY ~/go/bin/buildmeaplaylist-api
+
+# TODO: How to quick start a database? Fill this in later Jasper
+```
+
 # Requirements
 Install buildmeaplaylist-api
 
