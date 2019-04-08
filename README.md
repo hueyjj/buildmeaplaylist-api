@@ -25,12 +25,12 @@ Install bcrypt for hashing
 # Running
 Start the server
 
-`IP=0.0.0.0 PORT=8080 DB=YOUR_POSTGRESQL_URL ./buildmeaplaylist-api`
+`IP=0.0.0.0 PORT=8080 DB=YOUR_POSTGRESQL_URL SESSION_KEY=YOUR_SESSION_KEY ./buildmeaplaylist-api`
 
 # Bash control
 Run background process
 
-`IP=0.0.0.0 PORT=8080 ./buildmeaplaylist-api &`
+`PROGRAM &`
 
 List running background processes
 
@@ -39,3 +39,13 @@ List running background processes
 Kill the third running background process
 
 `kill %3`
+
+# Testing
+Tool: Postman
+Routes:
+    localhost:8080/api/signup
+    localhost:8080/api/login
+Body: x-www-form-urlencoded
+
+signup values: email, firstName, lastName, password
+login values: email, password
