@@ -13,7 +13,7 @@ Install request router
 # Running
 Start the server
 
-`IP=0.0.0.0 PORT=8080 ./buildmeaplaylist-api`
+`IP=0.0.0.0 PORT=8080 DB=YOUR_POSTGRESQL_URL ./buildmeaplaylist-api`
 
 # Bash control
 Run background process
