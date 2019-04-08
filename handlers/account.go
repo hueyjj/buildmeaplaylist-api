@@ -48,6 +48,7 @@ func (ps *Postgres) AddUserHandler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Unable to execute sql statement for adding user: %v\n", err)
 		status = fmt.Sprintf("Unable to execute sql statement for adding user: %v\n", err)
 	} else {
+		log.Printf("Successfully added %s %s (%s) to the database\n", firstName, lastName, email)
 		status = fmt.Sprintf("Successfully added %s %s (%s) to the database\n", firstName, lastName, email)
 	}
 
