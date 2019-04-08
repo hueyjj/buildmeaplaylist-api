@@ -10,12 +10,13 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/gorilla/sessions"
 	"github.com/hueyjj/buildmeaplaylist-api/handlers"
 )
 
 // Serve creates a server handling routes to create, update, and
 // remove database records
-func Serve(db *handlers.Postgres, ip, port string) {
+func Serve(db *handlers.Postgres, store *sessions.CookieStore, ip, port string) {
 	router := mux.NewRouter()
 	router.HandleFunc("/api", handlers.IndexHandler).Methods("GET")
 	router.HandleFunc("/api/user/add", db.AddUserHandler).Methods("POST")

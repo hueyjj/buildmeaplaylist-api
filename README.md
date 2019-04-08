@@ -10,6 +10,14 @@ Install request router
 
 `go get -u github.com/gorilla/mux`
 
+Install sessions
+
+`go get -u github.com/gorilla/sessions`
+
+Install postgresql driver
+
+`go get -u github.com/lib/pq`
+
 # Running
 Start the server
 
