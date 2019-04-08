@@ -3,7 +3,7 @@ Not sure If we want to automate creating and validating tables yet. But when we 
 
 Current tables we need (manually make these for now):
 
-`CREATE TABLE members(email varchar(50) NOT NULL PRIMARY KEY, password varchar (50) NOT NULL, first_name varchar(20) NOT NULL, last_name varchar(20) NOT NULL);`
+`CREATE TABLE members(email varchar(50) NOT NULL PRIMARY KEY, password varchar (100) NOT NULL, first_name varchar(20) NOT NULL, last_name varchar(20) NOT NULL);`
 
 ## Database url 
 The format looks something like this.
