@@ -18,6 +18,10 @@ Install postgresql driver
 
 `go get -u github.com/lib/pq`
 
+Install bcrypt for hashing
+
+`go get -u golang.org/x/crypto/bcrypt`
+
 # Running
 Start the server
 

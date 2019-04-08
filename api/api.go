@@ -16,12 +16,14 @@ import (
 
 // Serve creates a server handling routes to create, update, and
 // remove database records
-func Serve(db *handlers.Postgres, store *sessions.CookieStore, ip, port string) {
+func Serve(ct *handlers.Controller, store *sessions.CookieStore, ip, port string) {
 	router := mux.NewRouter()
 	router.HandleFunc("/api", handlers.IndexHandler).Methods("GET")
-	router.HandleFunc("/api/user/add", db.AddUserHandler).Methods("POST")
-	router.HandleFunc("/api/user/remove", db.RemoveUserHandler).Methods("POST")
-	router.HandleFunc("/api/user/update", db.UpdateUserHandler).Methods("POST")
+	router.HandleFunc("/api/signup", handlers.SignUpHandler(ct, store)).Methods("POST")
+	router.HandleFunc("/api/login", handlers.LoginHandler(ct, store)).Methods("POST")
+	//router.HandleFunc("/api/user/add", db.AddUserHandler).Methods("POST")
+	//router.HandleFunc("/api/user/remove", db.RemoveUserHandler).Methods("POST")
+	//router.HandleFunc("/api/user/update", db.UpdateUserHandler).Methods("POST")
 
 	ipport := fmt.Sprintf("%s:%s", ip, port)
 	server := &http.Server{
